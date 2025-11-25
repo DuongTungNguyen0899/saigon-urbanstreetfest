@@ -1,0 +1,1259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="vi"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;CHẤM ĐIỂM CUỘC THI&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Tải Tailwind CSS --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Tải Font Inter --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--primary-color: #4f46e5; /* Indigo */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--primary-hover: #4338ca;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--success-color: #10b981;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--danger-color: #ef4444;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--logo-color: #e879f9; /* Fuchsia for highlighting */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f3f4f6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container { max-width: 1200px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn-primary {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: background-color 0.2s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn-primary:hover { background-color: var(--primary-hover); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.score-input {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%; /* Fill the container in column layout */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Grid layout for criteria (vertical arrangement) */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.criteria-grid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: grid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Mobile adjustment for criteria */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (max-width: 640px) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>.criteria-grid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>gap: 12px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contestant-list-item:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f3f4f6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.active-contestant {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-left: 5px solid var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #eef2ff !important;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: 700;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="app" class="container mx-auto p-4 md:p-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;header class="bg-white shadow-lg rounded-xl p-4 mb-8 flex flex-col md:flex-row justify-between items-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- LOGO VÀ TIÊU ĐỀ HỆ THỐNG --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center space-x-4 mb-4 md:mb-0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="image_845ee0.jpg" alt="Logo Cuộc thi"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>class="h-12 w-auto md:h-16 object-contain rounded-lg shadow-md border-2 border-gray-100"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>onerror="this.onerror=null;this.src='https://placehold.co/64x64/E9D5FF/8B5CF6?text=LOGO'"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-3xl md:text-4xl font-extrabold text-fuchsia-600 tracking-wider"&gt;CHẤM ĐIỂM CUỘC THI&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- THÔNG TIN VAI TRÒ &amp; NÚT ĐĂNG XUẤT --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="user-info" class="text-sm mt-4 md:mt-0 p-2 bg-gray-50 rounded-lg border border-gray-200 flex items-center hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mr-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Vai trò: &lt;span id="user-role" class="font-bold text-lg text-primary-color"&gt;&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;UID: &lt;span id="user-id" class="font-mono text-gray-600 break-all text-xs"&gt;&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Nút Đăng xuất gọi hàm handleLogout() --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button id="logout-btn" onclick="handleLogout()" class="px-3 py-1 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Đăng xuất</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;main id="main-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- Login UI will be rendered here first --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Firebase SDKs --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="module"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs, addDoc, writeBatch, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// BẬT LOG DEBUG FIRESTORE</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>setLogLevel('Debug');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- GLOBAL VARIABLES &amp; INITIALIZATION ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// VAI TRÒ MÔ PHỎNG VÀ UID TƯƠNG ỨNG ĐỂ KIỂM TRA PHÂN QUYỀN</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const SIMULATED_ROLES = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'admin': { uid: 'sim-admin-001', role: 'admin' },<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'judge1': { uid: 'sim-judge-001', role: 'judge' }, // Giám khảo mặc định</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>'support': { uid: 'sim-support-001', role: 'support' }, // Hỗ trợ/Người xem</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let app, db, auth;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let userId = null;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let userRole = null;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let isAuthReady = false;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let listeners = []; // Mảng để lưu trữ các hàm hủy lắng nghe</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Data States</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let contestants = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let judges = []; // Danh sách giám khảo (cập nhật qua listener hoặc preload)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let individualScores = {};<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const criteriaList = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"Tiêu chí 1: Nội dung", "Tiêu chí 2: Thuyết trình", "Tiêu chí 3: Kỹ thuật",<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"Tiêu chí 4: Sáng tạo", "Tiêu chí 5: Tác động", "Tiêu chí 6: Tính khả thi",<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"Tiêu chí 7: Trả lời", "Tiêu chí 8: Thiết kế", "Tiêu chí 9: Tổng thể",<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"Tiêu chí 10: Điểm thưởng"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const MAX_SCORE_PER_CRITERIA = 10;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const NUM_CRITERIA = criteriaList.length;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Public Firestore Path</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const getPublicCollectionPath = (collectionName) =&gt; `/artifacts/${appId}/public/data/${collectionName}`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- FIRESTORE PRELOAD &amp; CORE SETUP ---</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Tải dữ liệu Giám khảo một lần (trước khi đăng nhập) để kiểm tra vai trò</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const preloadJudgeData = async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!db) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const judgesSnapshot = await getDocs(collection(db, getPublicCollectionPath('judges')));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>judges = judgesSnapshot.docs.map(doc =&gt; ({ id: doc.id, ...doc.data() }));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi tải trước dữ liệu giám khảo:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const initFirebase = async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (Object.keys(firebaseConfig).length === 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderErrorUI("Lỗi Cấu hình: Không tìm thấy cấu hình Firebase.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>app = initializeApp(firebaseConfig);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>db = getFirestore(app);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>auth = getAuth(app);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Đảm bảo xác thực hoàn tất trước khi tiếp tục</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await new Promise((resolve, reject) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const unsubscribe = onAuthStateChanged(auth, async (user) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>unsubscribe();<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>if (user) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>resolve();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>if (initialAuthToken) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>await signInWithCustomToken(auth, initialAuthToken);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>await signInAnonymously(auth);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>resolve();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>} catch (e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>reject(e);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>isAuthReady = true;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Tải trước dữ liệu Giám khảo để hàm login có thể check vai trò</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await preloadJudgeData();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Bắt đầu với giao diện đăng nhập</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderLoginForm();<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi khởi tạo hoặc xác thực Firebase:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderErrorUI("Không thể kết nối Firebase. Vui lòng kiểm tra lại cấu hình.");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- LOGIN &amp; ROLE MANAGEMENT ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleSimulatedLogin = (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const roleKey = document.getElementById('role-key-input').value.trim();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let effectiveRole = null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let effectiveUid = null;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Kiểm tra các vai trò mô phỏng cố định</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (SIMULATED_ROLES[roleKey.toLowerCase()]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>effectiveRole = SIMULATED_ROLES[roleKey.toLowerCase()].role;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>effectiveUid = SIMULATED_ROLES[roleKey.toLowerCase()].uid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 2. Kiểm tra nếu Judge đã được thêm thủ công (chỉ cần nhập đúng UID)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Lấy vai trò đã được Admin gán từ Firestore (dùng mảng judges đã được preload)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!effectiveRole) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>const foundJudge = judges.find(j =&gt; j.id === roleKey);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>if (foundJudge) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>effectiveRole = foundJudge.role; // Lấy vai trò đã được lưu trong Firestore</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>effectiveUid = foundJudge.id; // Sử dụng UID nhập vào</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (effectiveRole &amp;&amp; effectiveUid) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userId = effectiveUid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userRole = effectiveRole;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const userInfoDiv = document.getElementById('user-info');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userInfoDiv.classList.remove('hidden');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userInfoDiv.querySelector('#user-id').textContent = userId;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userInfoDiv.querySelector('#user-role').textContent = userRole.toUpperCase();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage(`Đăng nhập thành công với vai trò: ${userRole.toUpperCase()}`, 'success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>startListeners();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderUI();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Mã vai trò không hợp lệ. Vui lòng thử lại.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleLogout = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Dừng tất cả các listener đang hoạt động</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners.forEach(unsubscribe =&gt; unsubscribe());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners = [];<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 2. Reset application state</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>userId = null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>userRole = null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>contestants = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>individualScores = {};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentContestantIndex = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>judges = []; // Reset judges array for next login preload</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 3. Clear user info display and hide it</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('user-info').classList.add('hidden');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('user-id').textContent = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('user-role').textContent = '';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 4. Re-render the login form and preload data again</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>showMessage('Đã đăng xuất thành công.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Dùng setTimeout để đảm bảo UI kịp reset trước khi preload/render</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>await preloadJudgeData();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>renderLoginForm();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 100);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderLoginForm = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('main-content').innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-center items-center h-full min-h-[50vh]"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full max-w-sm bg-white p-8 rounded-xl shadow-2xl border border-gray-100"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2 class="text-3xl font-bold text-primary-color mb-6 text-center"&gt;Đăng nhập Hệ thống&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Đã ẩn khối hướng dẫn mã vai trò theo yêu cầu của người dùng --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!--<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-gray-600 mb-4 text-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>Sử dụng các Mã vai trò mô phỏng sau để kiểm tra giao diện:</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-indigo-50 p-3 rounded-lg text-sm mb-6 font-mono space-y-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;&lt;span class="font-bold text-indigo-700"&gt;admin&lt;/span&gt;: Quản trị&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;&lt;span class="font-bold text-green-700"&gt;judge1&lt;/span&gt;: Giám khảo (Mặc định)&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;&lt;span class="font-bold text-blue-700"&gt;support&lt;/span&gt;: Hỗ trợ/Người xem&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="mt-2 text-xs text-gray-600"&gt;Hoặc nhập UID/Mã vai trò đã được Admin thêm.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>--&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;form id="login-form" class="space-y-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;label for="role-key-input" class="block text-sm font-medium text-gray-700"&gt;Mã vai trò / UID&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;input type="text" id="role-key-input" required placeholder="Nhập mã vai trò hoặc UID"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 border focus:ring-primary-color focus:border-primary-color" value=""&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button id="login-btn" type="submit" class="btn-primary text-white py-3 px-4 rounded-lg font-semibold w-full"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>Đăng nhập</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Attach event listener</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('login-form').addEventListener('submit', handleSimulatedLogin);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- FIRESTORE LISTENERS ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const startListeners = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!db || !userId) return;<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Clear previous listeners (although handleLogout does this, it's safer here too)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners.forEach(unsubscribe =&gt; unsubscribe());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners = [];<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. JUDGES Listener (Real-time updates for Admin/Support UI)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgesCollectionRef = collection(db, getPublicCollectionPath('judges'));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeListener = onSnapshot(judgesCollectionRef, (snapshot) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>judges = snapshot.docs.map(doc =&gt; ({ id: doc.id, ...doc.data() }));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Khi dữ liệu giám khảo thay đổi, render lại UI nếu là Admin/Support/Observer</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (userRole === 'admin' || userRole === 'support' || userRole === 'observer') renderUI();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, (error) =&gt; console.error("Error listening to judges:", error));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners.push(judgeListener);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 2. Contestants Listener</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const contestantsListener = onSnapshot(collection(db, getPublicCollectionPath('contestants')), (snapshot) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>contestants = snapshot.docs.map(doc =&gt; ({ id: doc.id, ...doc.data() }));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Sort by ID to ensure a consistent, stable judging order across all judges</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>contestants.sort((a, b) =&gt; a.id.localeCompare(b.id));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Recalculate rankings based on average score</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>contestants.sort((a, b) =&gt; (b.scores?.average || 0) - (a.scores?.average || 0));<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let rank = 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let lastAverage = -1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>contestants.forEach((c, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (c.scores?.average !== lastAverage) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>rank = index + 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>lastAverage = c.scores?.average;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>c.rank = rank;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Reset order for judge view based on the stable, unsorted list</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// We use this stable list (sorted by ID) for sequential navigation in the judge view</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>judgeContestantOrder = snapshot.docs.map(doc =&gt; ({ id: doc.id, ...doc.data() })).sort((a, b) =&gt; a.id.localeCompare(b.id));</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Cập nhật giao diện sau khi dữ liệu thí sinh thay đổi</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (userRole === 'admin') renderAdminUI();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (userRole &amp;&amp; userRole !== 'admin') renderUI();<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, (error) =&gt; console.error("Error listening to contestants:", error));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners.push(contestantsListener);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 3. Individual Scores Listener</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoresListener = onSnapshot(collection(db, getPublicCollectionPath('individualScores')), (snapshot) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>individualScores = {};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>snapshot.docs.forEach(doc =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const data = doc.data();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (!individualScores[data.contestantId]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>individualScores[data.contestantId] = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>individualScores[data.contestantId].push({ id: doc.id, ...data });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>calculateOverallScores();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Cập nhật giao diện sau khi điểm số thay đổi</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (userRole &amp;&amp; userRole !== 'admin') renderUI();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, (error) =&gt; console.error("Error listening to individualScores:", error));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>listeners.push(scoresListener);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- SCORING LOGIC (Unchanged) ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const calculateOverallScores = async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const batch = writeBatch(db);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let teamScores = {};<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>contestants.forEach(contestant =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const contestantId = contestant.id;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const scoresArray = individualScores[contestantId] || [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let totalScoreSum = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let validJudgeCount = 0;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scoresArray.forEach(scoreEntry =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>totalScoreSum += scoreEntry.totalScore || 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>validJudgeCount++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const averageScore = validJudgeCount &gt; 0 ? (totalScoreSum / validJudgeCount) : 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const totalScore = totalScoreSum;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const contestantRef = doc(db, getPublicCollectionPath('contestants'), contestantId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const newScores = { total: totalScore, average: parseFloat(averageScore.toFixed(2)), judgeCount: validJudgeCount };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>batch.update(contestantRef, { scores: newScores });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Accumulate team scores if it is a 'team' entry</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (contestant.type === 'team') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const teamName = contestant.name; // Name is the team name here</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (!teamScores[teamName]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>teamScores[teamName] = { total: 0, count: 0 };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>teamScores[teamName].total += averageScore;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>teamScores[teamName].count++;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Calculate final team scores<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let finalTeamResults = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>for (const team in teamScores) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const teamData = teamScores[team];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>finalTeamResults.push({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>name: team,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>average: parseFloat((teamData.total / teamData.count).toFixed(2))<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Sort and assign team rank</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>finalTeamResults.sort((a, b) =&gt; b.average - a.average);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>finalTeamResults.forEach((team, index) =&gt; team.rank = index + 1);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const teamResultsRef = doc(db, getPublicCollectionPath('results'), 'teams');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>batch.set(teamResultsRef, { teams: finalTeamResults });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await batch.commit();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi cập nhật điểm số tổng thể:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- UTILITY UI FUNCTIONS (Unchanged) ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const showMessage = (message, type = 'success') =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const appDiv = document.getElementById('app');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const alertDiv = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alertDiv.className = `fixed top-5 right-5 p-4 rounded-lg shadow-xl text-white z-50 transition-all duration-300 transform translate-y-0 ${type === 'success' ? 'bg-success-color' : 'bg-danger-color'}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>alertDiv.textContent = message;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>appDiv.appendChild(alertDiv);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; alertDiv.remove(), 4000);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Judge specific state for sequential flow</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let currentContestantIndex = 0;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let judgeContestantOrder = [];<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const navigateContestant = (direction) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let newIndex = currentContestantIndex + direction;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (newIndex &gt;= 0 &amp;&amp; newIndex &lt; judgeContestantOrder.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentContestantIndex = newIndex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderJudgeContestantList();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else if (newIndex &gt;= judgeContestantOrder.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentContestantIndex = judgeContestantOrder.length - 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else if (newIndex &lt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>currentContestantIndex = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// New function to jump to a specific contestant by their index in the judgeContestantOrder</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const selectContestantByIndex = (index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (index &gt;= 0 &amp;&amp; index &lt; judgeContestantOrder.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentContestantIndex = index;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>renderJudgeContestantList();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Calculate the judge's running total score from input fields</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const calculateJudgeTotalScore = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const inputs = document.querySelectorAll('#score-form .score-input');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let total = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>inputs.forEach(input =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const value = parseFloat(input.value);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!isNaN(value) &amp;&amp; value &gt;= 0 &amp;&amp; value &lt;= MAX_SCORE_PER_CRITERIA) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>total += value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('current-total-score').textContent = total.toFixed(2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- ERROR UI ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderErrorUI = (message) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>document.getElementById('main-content').innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="p-8 bg-red-100 border border-red-400 text-red-700 rounded-xl shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="font-bold text-xl"&gt;Lỗi Hệ thống:&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-2"&gt;${message}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- UI RENDERING (ROLE DELEGATION) ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderUI = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!userId) return; // Chỉ render khi đã login</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Xử lý các vai trò tùy chỉnh và map chúng về giao diện chính</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let effectiveRoleForUI = userRole;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Map các vai trò chấm điểm về giao diện judge cơ bản</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (userRole === 'judge-chief' || userRole === 'judge-trainee' || userRole === 'judge') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>effectiveRoleForUI = 'judge';<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Map vai trò quan sát/hỗ trợ về giao diện support/viewer</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>else if (userRole === 'observer' || userRole === 'support') {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>effectiveRoleForUI = 'support';<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>switch (effectiveRoleForUI) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>case 'admin':</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>renderAdminUI();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>break;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>case 'judge': // Bao gồm judge, judge-chief, judge-trainee</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>renderJudgeContestantList();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>break;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>case 'support': // Bao gồm support, observer</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>renderSupportUI();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>break;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>default:</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>renderErrorUI(`Không xác định được vai trò người dùng: ${userRole}.`);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- ADMIN FUNCTIONS ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleAddContestant = async (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const name = document.getElementById('new-contestant-name').value.trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const type = document.querySelector('input[name="contestant-type"]:checked')?.value;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!name || !type) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return showMessage('Vui lòng nhập Tên và chọn Loại.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const newContestant = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: name,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>type: type, // 'individual' or 'team'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scores: { total: 0, average: 0, judgeCount: 0 },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>createdAt: new Date()</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Add a new document to the 'contestants' collection</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await addDoc(collection(db, getPublicCollectionPath('contestants')), newContestant);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage(`Đã thêm đối tượng "${name}" thành công!`, 'success');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// --- SỬA LỖI: Kiểm tra phần tử có tồn tại trước khi reset ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('new-contestant-name').value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const checkedRadio = document.querySelector('input[name="contestant-type"]:checked');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (checkedRadio) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>checkedRadio.checked = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// --- KẾT THÚC SỬA LỖI ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi khi thêm thí sinh:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Lỗi khi thêm đối tượng.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleDeleteContestant = async (id, name) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>console.warn(`[ADMIN ACTION] Đang xóa đối tượng "${name}" (${id}) và tất cả điểm số liên quan.`);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// In a real application, we would use a modal confirmation here.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// For this sandbox, we proceed directly but use console.log as a safety check.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Chuẩn bị xóa điểm số liên quan (trong individualScores)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const batch = writeBatch(db);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Lấy tất cả các tài liệu điểm số liên quan đến contestantId này</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoresQuery = query(collection(db, getPublicCollectionPath('individualScores')), where("contestantId", "==", id));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const scoresSnapshot = await getDocs(scoresQuery);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scoresSnapshot.docs.forEach(doc =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>batch.delete(doc.ref);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 2. Xóa tài liệu thí sinh chính</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const contestantRef = doc(db, getPublicCollectionPath('contestants'), id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>batch.delete(contestantRef);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 3. Thực thi batch</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await batch.commit();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage(`Đã xóa đối tượng "${name}" và ${scoresSnapshot.size} điểm số liên quan.`, 'success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi khi xóa thí sinh và điểm số:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Lỗi khi xóa đối tượng.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleAddJudge = async (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const name = document.getElementById('new-judge-name').value.trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const uid = document.getElementById('new-judge-uid').value.trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const role = document.getElementById('new-judge-role').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const note = document.getElementById('new-judge-note').value.trim();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!name || !uid || !role) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return showMessage('Vui lòng nhập đủ Tên, UID và Vai trò.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeRef = doc(db, getPublicCollectionPath('judges'), uid);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const newJudge = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>name: name,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>role: role,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>note: note,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>addedBy: userId,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>addedAt: new Date()</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Use setDoc with the UID as the document ID</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await setDoc(judgeRef, newJudge);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage(`Đã thêm/cập nhật Giám khảo "${name}" (${uid}) thành công!`, 'success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Clear form</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('new-judge-name').value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('new-judge-uid').value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('new-judge-role').value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('new-judge-note').value = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi khi thêm giám khảo:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Lỗi khi thêm giám khảo.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleDeleteJudge = async (id, name) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>console.warn(`[ADMIN ACTION] Đang xóa giám khảo "${name}" (${id}).`);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Chuẩn bị xóa điểm số liên quan (Giám khảo này đã chấm)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const batch = writeBatch(db);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Lấy tất cả các tài liệu điểm số mà judgeId này đã chấm</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoresQuery = query(collection(db, getPublicCollectionPath('individualScores')), where("judgeId", "==", id));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const scoresSnapshot = await getDocs(scoresQuery);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scoresSnapshot.docs.forEach(doc =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>batch.delete(doc.ref);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 2. Xóa tài liệu giám khảo chính</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const judgeRef = doc(db, getPublicCollectionPath('judges'), id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>batch.delete(judgeRef);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 3. Thực thi batch</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await batch.commit();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage(`Đã xóa Giám khảo "${name}" và ${scoresSnapshot.size} điểm số họ đã chấm.`, 'success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi khi xóa giám khảo và điểm số:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Lỗi khi xóa giám khảo.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderAdminUI = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const content = document.getElementById('main-content');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Contestant Table HTML</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const contestantTableHtml = contestants.map((c, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const typeClass = c.type === 'team' ? 'text-green-600' : 'text-blue-600';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500 text-center"&gt;${c.rank || index + 1}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"&gt;${c.name}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm font-semibold ${typeClass}"&gt;${c.type === 'team' ? 'ĐỘI THI' : 'CÁ NHÂN'}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-bold"&gt;${(c.scores?.average || 0).toFixed(2)}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onclick="handleDeleteContestant('${c.id}', '${c.name}')" class="text-red-600 hover:text-red-900 transition duration-150"&gt;Xóa (Check Console)&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}).join('');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content.innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 lg:grid-cols-3 gap-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- 1. Quản lý Thí sinh --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2 class="text-2xl font-bold mb-4 text-indigo-700 border-b pb-2"&gt;ADMIN: Quản lý Thí sinh/Đội thi &amp; Kết quả&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-medium mb-3"&gt;Thông tin Admin (Quan trọng)&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="p-3 mb-4 bg-indigo-50 border border-indigo-200 rounded-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-indigo-800 font-bold"&gt;UID của bạn (Admin): &lt;span id="admin-uid-display" class="font-mono break-all"&gt;${userId}&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xs mt-1 text-gray-600"&gt;Sử dụng ID này để thêm Giám khảo mới vào hệ thống.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div id="results-summary" class="mb-6"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-medium mb-3 border-b pb-2"&gt;Thêm Đối tượng Chấm điểm&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;form id="add-contestant-form" class="space-y-4 mb-6 p-4 bg-gray-50 rounded-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;label class="block text-sm font-medium text-gray-700 w-24"&gt;Loại:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="flex gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;label class="inline-flex items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;input type="radio" name="contestant-type" value="individual" required class="form-radio text-blue-600"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span class="ml-2"&gt;Cá nhân&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;label class="inline-flex items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;input type="radio" name="contestant-type" value="team" class="form-radio text-green-600"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span class="ml-2"&gt;Đội thi&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;label for="new-contestant-name" class="block text-sm font-medium text-gray-700"&gt;Tên (Thí sinh hoặc Đội)&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;input type="text" id="new-contestant-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button type="submit" class="btn-primary text-white py-2 px-4 rounded-lg font-semibold w-full"&gt;Thêm Đối tượng&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/form&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-medium mb-3 border-b pb-2"&gt;Danh sách Đối tượng (${contestants.length})&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="overflow-x-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;table class="min-w-full divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;thead class="bg-gray-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center"&gt;Hạng&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Tên&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Loại&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Điểm TB&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"&gt;Hành động&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/thead&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;tbody id="contestants-table-body" class="bg-white divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>${contestantTableHtml}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/tbody&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/table&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- 2. Quản lý Giám khảo --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-xl shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>${renderJudgeManagement()}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Re-attach event listeners</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('add-contestant-form').addEventListener('submit', handleAddContestant);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('add-judge-form').addEventListener('submit', handleAddJudge);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderResultsSummary();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- JUDGE FUNCTIONS &amp; UI ---</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const handleScoreSubmission = async (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const form = e.target;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const contestantId = form.dataset.contestantId;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const inputs = form.querySelectorAll('.score-input');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scores = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let totalScore = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let allCriteriaScored = true;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; NUM_CRITERIA; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const value = parseFloat(inputs[i].value);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// CHECK 1: Must be a number and within 0-MAX_SCORE_PER_CRITERIA range</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (isNaN(value) || value &lt; 0 || value &gt; MAX_SCORE_PER_CRITERIA) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>allCriteriaScored = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>break;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scores.push(value);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>totalScore += value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!allCriteriaScored) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return showMessage(`Vui lòng nhập điểm (0-${MAX_SCORE_PER_CRITERIA}) cho TẤT CẢ các tiêu chí.`, 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const submissionData = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>judgeId: userId,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>contestantId: contestantId,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scores: scores,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>totalScore: parseFloat(totalScore.toFixed(2)),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>submittedAt: new Date(),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>judgeName: judges.find(j =&gt; j.id === userId)?.name || 'Giám khảo Ẩn Danh'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoreId = `${userId}_${contestantId}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoreRef = doc(db, getPublicCollectionPath('individualScores'), scoreId);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>await setDoc(scoreRef, submissionData);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Chấm điểm thành công! Chuyển sang đối tượng tiếp theo.', 'success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Re-render to show updated list and next contestant</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Find the index of the newly scored contestant in the stable order</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const currentContestantIndex = judgeContestantOrder.findIndex(c =&gt; c.id === contestantId);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (currentContestantIndex !== -1) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// Try to move to the next contestant in the stable list</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let nextIndex = currentContestantIndex + 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (nextIndex &gt;= judgeContestantOrder.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>// If it was the last one, find the first unscored one, or stay put</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const firstUnscoredIndex = judgeContestantOrder.findIndex(c =&gt; !individualScores[c.id]?.find(s =&gt; s.judgeId === userId));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>nextIndex = firstUnscoredIndex !== -1 ? firstUnscoredIndex : currentContestantIndex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>selectContestantByIndex(nextIndex); // Update UI</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>renderJudgeContestantList();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi gửi điểm:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showMessage('Lỗi khi gửi điểm.', 'danger');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderJudgeContestantList = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeScores = individualScores;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeData = judges.find(j =&gt; j.id === userId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const roleName = judgeData?.name || 'Giám khảo Ẩn Danh';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const roleTitle = judgeData?.role?.toUpperCase() || 'JUDGE';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (judgeContestantOrder.length === 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>document.getElementById('main-content').innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-bold mb-6 text-green-700 border-b pb-2"&gt;${roleTitle}: Giao diện Chấm điểm&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-500 p-6 bg-white rounded-lg shadow"&gt;Hiện chưa có đối tượng nào cần chấm điểm. Vui lòng liên hệ Admin để thêm đối tượng.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// --- LOGIC: Xác định thí sinh đang được chọn (currentContestantIndex) ---</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Lấy danh sách điểm của GIÁM KHẢO hiện tại</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoredContestants = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const unscoredContestants = [];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>judgeContestantOrder.forEach((contestant, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const myScore = judgeScores[contestant.id]?.find(s =&gt; s.judgeId === userId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (myScore) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>scoredContestants.push({<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>...contestant,<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>judgeScore: myScore.totalScore,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>originalIndex: index // Keep original index for navigation later</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>unscoredContestants.push({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>...contestant,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>judgeScore: null,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>originalIndex: index</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 2. Sắp xếp danh sách ĐÃ CHẤM theo điểm số từ CAO -&gt; THẤP (Yêu cầu mới)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>scoredContestants.sort((a, b) =&gt; b.judgeScore - a.judgeScore);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 3. Tạo danh sách hiện thị cuối cùng (Đã chấm + Chưa chấm)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const sortedContestantsForList = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>...scoredContestants,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>...unscoredContestants</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 4. Nếu currentContestantIndex không hợp lệ, tìm vị trí đầu tiên chưa chấm</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (currentContestantIndex &lt; 0 || currentContestantIndex &gt;= judgeContestantOrder.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const firstUnscored = judgeContestantOrder.findIndex(c =&gt; !judgeScores[c.id]?.find(s =&gt; s.judgeId === userId));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentContestantIndex = firstUnscored !== -1 ? firstUnscored : 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const currentContestant = judgeContestantOrder[currentContestantIndex];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const myScore = judgeScores[currentContestant.id]?.find(s =&gt; s.judgeId === userId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const isScored = !!myScore;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let scoreInputsHtml = criteriaList.map((crit, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const value = myScore?.scores?.[index] !== undefined ? myScore.scores[index] : '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col p-3 bg-gray-50 rounded-lg border shadow-sm"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;label class="text-xs font-semibold mb-1 text-gray-700 text-left"&gt;${crit} &lt;span class="text-red-500 font-bold"&gt;(max ${MAX_SCORE_PER_CRITERIA})&lt;/span&gt;&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;input type="number" step="0.1" min="0" max="${MAX_SCORE_PER_CRITERIA}" placeholder="0.0 - ${MAX_SCORE_PER_CRITERIA}.0" value="${value}"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>class="score-input p-2 border rounded-md text-xl font-bold text-center focus:ring-primary-color focus:border-primary-color disabled:bg-gray-200" ${isScored ? 'disabled' : ''}&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}).join('');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const totalContestantsCount = judgeContestantOrder.length;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scoredCount = scoredContestants.length;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const progressText = `${currentContestantIndex + 1} / ${totalContestantsCount}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const isFirst = currentContestantIndex === 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const isLast = currentContestantIndex === judgeContestantOrder.length - 1;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// --- LIST UI GENERATION ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let listHtml = ``;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let rankCounter = 1;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 1. Scored List (Sorted by Score)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (scoredContestants.length &gt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>listHtml += `&lt;h4 class="text-sm font-bold text-success-color uppercase tracking-wider mt-4 mb-2 border-t pt-2"&gt;ĐÃ HOÀN THÀNH (${scoredContestants.length}) - Xếp hạng theo Điểm riêng&lt;/h4&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>listHtml += scoredContestants.map((c, idx) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// Check if this contestant is the currently viewed one</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const isActive = c.originalIndex === currentContestantIndex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// Rank is determined by the sorting within the scored list</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const displayRank = idx + 1;<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div onclick="selectContestantByIndex(${c.originalIndex})"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>class="contestant-list-item flex justify-between items-center p-3 rounded-lg cursor-pointer transition ${isActive ? 'active-contestant shadow-md' : 'bg-white border'}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center space-x-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-lg font-extrabold ${isActive ? 'text-primary-color' : 'text-gray-500'} w-8 text-center"&gt;${displayRank}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-sm font-semibold"&gt;${c.name}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-xs ${isActive ? 'text-gray-600' : 'text-gray-400'}"&gt;${c.type === 'team' ? 'Đội thi' : 'Cá nhân'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="text-right"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xl font-bold text-success-color"&gt;${c.judgeScore.toFixed(2)}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-xs text-gray-500"&gt;Điểm riêng&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>}).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 2. Unscored List (Unsorted, stable order)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (unscoredContestants.length &gt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>listHtml += `&lt;h4 class="text-sm font-bold text-red-500 uppercase tracking-wider mt-4 mb-2 border-t pt-2"&gt;CHƯA CHẤM ĐIỂM (${unscoredContestants.length})&lt;/h4&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>listHtml += unscoredContestants.map(c =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>const isActive = c.originalIndex === currentContestantIndex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div onclick="selectContestantByIndex(${c.originalIndex})"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>class="contestant-list-item flex justify-between items-center p-3 rounded-lg cursor-pointer transition ${isActive ? 'active-contestant shadow-md' : 'bg-white border'}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center space-x-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-lg font-extrabold ${isActive ? 'text-primary-color' : 'text-gray-300'} w-8 text-center"&gt;?&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-sm font-semibold"&gt;${c.name}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-xs ${isActive ? 'text-gray-600' : 'text-gray-400'}"&gt;${c.type === 'team' ? 'Đội thi' : 'Cá nhân'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="text-right"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xl font-bold text-red-500"&gt;-&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-xs text-gray-500"&gt;Chưa chấm&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>}).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('main-content').innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 lg:grid-cols-3 gap-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- Cột 1: Danh sách Thí sinh (Sắp xếp theo Điểm đã chấm) --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg h-[80vh] overflow-y-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2"&gt;Danh sách Chấm điểm (${totalContestantsCount})&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-gray-600 mb-4"&gt;Click để chuyển sang đối tượng cần chấm.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div id="judge-contestant-list" class="space-y-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                           </span>${listHtml}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- Cột 2 &amp; 3: Thẻ chấm điểm chi tiết --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center mb-6 pb-4 border-b"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h2 class="text-2xl font-bold text-green-700"&gt;${roleTitle}: Chấm điểm Chi tiết&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span class="text-base font-semibold text-gray-600"&gt;Đã chấm: ${scoredCount} / ${totalContestantsCount}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;!-- Current Contestant/Team Card --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6 rounded-xl border-4 ${isScored ? 'border-success-color bg-green-50' : 'border-red-400 bg-red-50'} mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-3xl font-extrabold text-gray-900"&gt;${currentContestant.name}&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="text-lg font-medium ${currentContestant.type === 'team' ? 'text-green-700' : 'text-blue-700'} uppercase"&gt;${currentContestant.type === 'team' ? 'Đội thi' : 'Cá nhân'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="mt-4 text-sm grid grid-cols-2 gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Giám khảo: &lt;span class="font-semibold"&gt;${roleName}&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Vị trí: &lt;span class="font-bold text-lg text-primary-color"&gt;${progressText}&lt;/span&gt;&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Trạng thái:<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;span class="font-bold ${isScored ? 'text-success-color' : 'text-red-500'}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>${isScored ? `ĐÃ HOÀN THÀNH` : `CHƯA CHẤM ĐIỂM`}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;!-- New: Hiển thị Tổng điểm đã chấm/đang nhập --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="${isScored ? 'text-xl font-extrabold text-success-color' : 'text-xl font-extrabold text-gray-800'}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>Tổng điểm riêng:<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;span id="current-total-score"&gt;${(myScore?.totalScore || 0).toFixed(2)}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;!-- New: Hiển thị Điểm TB (chỉ khi đã chấm xong) --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${isScored ? `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p class="text-xl font-extrabold text-indigo-700 col-span-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>Điểm TB Chung: ${(currentContestant.scores?.average || 0).toFixed(2)} / ${(MAX_SCORE_PER_CRITERIA * NUM_CRITERIA).toFixed(0)}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>` : ''}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;form id="score-form" data-contestant-id="${currentContestant.id}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Tiêu chí chấm điểm theo cột dọc --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="criteria-grid mb-6 p-4 border rounded-lg bg-indigo-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${scoreInputsHtml}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="flex justify-between items-center pt-4 border-t flex-wrap"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;button type="button" onclick="navigateContestant(-1)" ${isFirst ? 'disabled' : ''}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg font-semibold transition hover:bg-gray-400 disabled:opacity-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>← Thí sinh trước</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${isScored ?<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>`&lt;p class="text-xl font-extrabold text-success-color"&gt;ĐÃ GỬI ĐIỂM - Không thể sửa!&lt;/p&gt;` :</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>`&lt;button type="submit" class="btn-primary text-white py-3 px-8 rounded-lg font-extrabold shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                        </span>GỬI ĐIỂM</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;button type="button" onclick="navigateContestant(1)"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg font-semibold transition hover:bg-gray-400 disabled:opacity-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>Thí sinh tiếp theo →</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="text-sm text-gray-500 mt-2 text-center"&gt;**Nút Tiếp theo/Trước sẽ chuyển theo thứ tự ban đầu.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>// Attach event listeners</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const form = document.querySelector('#score-form');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (form) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>form.removeEventListener('submit', handleScoreSubmission);<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>form.addEventListener('submit', handleScoreSubmission);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Attach input listener to recalculate total score if not scored yet</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (!isScored) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>form.querySelectorAll('.score-input').forEach(input =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>input.addEventListener('input', calculateJudgeTotalScore);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>// Initial calculation (only applies if the form is NOT scored)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!isScored) calculateJudgeTotalScore();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- SUPPORT FUNCTIONS &amp; UI ---</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderJudgeManagement = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-4 text-gray-700"&gt;2. Quản lý Giám khảo&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-medium mb-3 border-b pb-2"&gt;Thêm Giám khảo&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;form id="add-judge-form" class="space-y-3 p-4 bg-gray-50 rounded-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;label for="new-judge-name" class="block text-sm font-medium text-gray-700"&gt;Tên Giám khảo&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="new-judge-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;label for="new-judge-uid" class="block text-sm font-medium text-gray-700"&gt;ID Người dùng (UID)&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="new-judge-uid" placeholder="Nhập UID/Mã vai trò để họ dùng đăng nhập" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border font-mono"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Sử dụng ID này làm Mã vai trò để Giám khảo đăng nhập.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- TRƯỜNG MỚI: CHỌN MÃ VAI TRÒ --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;label for="new-judge-role" class="block text-sm font-medium text-gray-700"&gt;Mã Vai trò (Admin chỉ định)&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;select id="new-judge-role" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;-- Chọn Mã Vai trò --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;option value="judge"&gt;Giám khảo Thường (Chấm điểm)&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;option value="judge-chief"&gt;Trưởng Ban Giám khảo (Chấm điểm + Quyền đặc biệt)&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;option value="judge-trainee"&gt;Giám khảo Tập sự (Chỉ xem/Chấm thử)&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;option value="observer"&gt;Người Quan sát (Chỉ xem kết quả)&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-gray-500 mt-1"&gt;Vai trò này sẽ quyết định quyền truy cập của họ sau khi đăng nhập.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;label for="new-judge-note" class="block text-sm font-medium text-gray-700"&gt;Ghi chú (Tùy chọn)&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="new-judge-note" placeholder="Ví dụ: Giám khảo vòng 1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button type="submit" class="btn-primary text-white py-2 px-4 rounded-lg font-semibold w-full"&gt;Thêm Giám khảo&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-medium my-4 border-b pb-2"&gt;Danh sách Giám khảo (${judges.length})&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div id="judge-list" class="space-y-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>${judges.map(j =&gt; `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center p-3 border rounded-lg bg-white"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-sm font-medium text-gray-800"&gt;${j.name}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-xs text-gray-500 font-mono"&gt;UID/Mã: ${j.id}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-xs text-indigo-700 font-bold"&gt;Vai trò: ${j.role ? j.role.toUpperCase() : 'Chưa gán'}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${j.note ? `&lt;p class="text-xs text-indigo-500 italic"&gt;Ghi chú: ${j.note}&lt;/p&gt;` : ''}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;!-- Note: The delete handler now uses console log instead of confirm --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onclick="handleDeleteJudge('${j.id}', '${j.name}')" class="text-xs text-red-600 hover:text-red-800 ml-4"&gt;Xóa (Check Console)&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>`).join('')}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderSupportUI = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const content = document.getElementById('main-content');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeStatusHtml = renderJudgeStatus();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const roleTitle = userRole.toUpperCase();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content.innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-2"&gt;${roleTitle}: Xem Kết quả &amp; Tình trạng Chấm điểm&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Tổng kết --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-6 rounded-xl shadow-lg mb-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-medium mb-3 border-b pb-2"&gt;Tổng kết Điểm thi và Thứ hạng&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div id="results-summary"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Chi tiết Giám khảo --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-6 rounded-xl shadow-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-medium mb-4 border-b pb-2"&gt;Tình trạng Chấm điểm của Giám khảo&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div id="judge-status-list"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>${renderJudgeStatus()}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderResultsSummary();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderResultsSummary = async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const container = document.getElementById('results-summary');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!container) return;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Fetch team results</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let teamResults = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const teamDoc = await getDoc(doc(db, getPublicCollectionPath('results'), 'teams'));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (teamDoc.exists() &amp;&amp; teamDoc.data().teams) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>teamResults = teamDoc.data().teams;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>console.error("Lỗi tải kết quả đội:", error);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Individual Ranking Table</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const individualTable = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700"&gt;Thứ hạng Cá nhân/Đội thi&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto mb-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;table class="min-w-full divide-y divide-gray-200 border rounded-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;thead class="bg-indigo-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-3 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider text-center"&gt;Hạng&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Tên&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Loại&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Điểm TB&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Số GK đã chấm&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;tbody class="bg-white divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>${contestants.map(c =&gt; `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;tr class="${c.rank === 1 ? 'bg-yellow-50 font-bold' : ''}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-3 py-4 whitespace-nowrap text-sm text-center"&gt;${c.rank || '-'}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"&gt;${c.name}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm ${c.type === 'team' ? 'text-green-600' : 'text-blue-600'}"&gt;${c.type === 'team' ? 'ĐỘI THI' : 'CÁ NHÂN'}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"&gt;${(c.scores?.average || 0).toFixed(2)}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"&gt;${c.scores?.judgeCount || 0}/${judges.length}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>`).join('')}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Team Ranking Table<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const teamTable = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h4 class="text-lg font-semibold mt-6 mb-3 text-gray-700"&gt;Thứ hạng Đội thi (Tổng hợp)&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;table class="min-w-full divide-y divide-gray-200 border rounded-lg"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;thead class="bg-indigo-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-3 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider text-center"&gt;Hạng&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Đội thi&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider"&gt;Điểm TB Đội&lt;/th&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;tbody class="bg-white divide-y divide-gray-200"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>${teamResults.map(t =&gt; `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;tr class="${t.rank === 1 ? 'bg-yellow-50 font-bold' : ''}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-3 py-4 whitespace-nowrap text-sm text-center"&gt;${t.rank || '-'}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"&gt;${t.name}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"&gt;${t.average.toFixed(2)}&lt;/td&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/tr&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>`).join('')}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>container.innerHTML = individualTable + (teamResults.length &gt; 0 ? teamTable : '&lt;p class="mt-4 text-gray-500"&gt;Chưa có kết quả tổng hợp của đội thi nào.&lt;/p&gt;');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const renderJudgeStatus = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const judgeIds = judges.map(j =&gt; j.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const totalContestants = judgeContestantOrder.length;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (totalContestants === 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>return '&lt;p class="text-gray-500"&gt;Chưa có đối tượng nào cần chấm điểm.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const statusHtml = judgeIds.map(judgeId =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const judgeData = judges.find(j =&gt; j.id === judgeId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const judgeName = judgeData?.name || `Giám khảo (${judgeId.substring(0, 5)}...)`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const judgeRole = judgeData?.role || 'judge'; // Lấy vai trò</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const scoresByThisJudge = Object.values(individualScores)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>.flatMap(scores =&gt; scores.filter(s =&gt; s.judgeId === judgeId));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const contestantIdsScored = scoresByThisJudge.map(s =&gt; s.contestantId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const scoredCount = contestantIdsScored.length;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// Detailed status list</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const detailHtml = judgeContestantOrder.map(c =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const scored = contestantIdsScored.includes(c.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs inline-flex items-center px-2.5 py-0.5 rounded-full font-medium ${scored ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} mr-2 mb-1 whitespace-nowrap"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>${scored ? '✓' : '✗'} ${c.name}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}).join('');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const progressPercentage = totalContestants &gt; 0 ? (scoredCount / totalContestants) * 100 : 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const progressBarColor = progressPercentage === 100 ? 'bg-success-color' : 'bg-yellow-500';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="mb-4 p-4 border rounded-lg shadow-sm bg-white"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-start mb-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-lg font-bold text-gray-700"&gt;${judgeName}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xs font-semibold text-indigo-500 ml-2"&gt;(${judgeRole.toUpperCase()})&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium ${progressPercentage === 100 ? 'text-success-color' : 'text-red-500'}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>${scoredCount}/${totalContestants} Đã chấm</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="w-full bg-gray-200 rounded-full h-2.5 mb-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="${progressBarColor} h-2.5 rounded-full" style="width: ${progressPercentage}%"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-wrap border-t pt-2 max-h-32 overflow-y-auto"&gt;${detailHtml}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}).join('');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return judges.length &gt; 0 ? statusHtml : '&lt;p class="text-gray-500"&gt;Chưa có giám khảo nào được thêm.&lt;/p&gt;';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Expose functions globally for inline HTML event handlers and for use in renderAdminUI attachment</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleDeleteContestant = handleDeleteContestant;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleDeleteJudge = handleDeleteJudge;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleScoreSubmission = handleScoreSubmission;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.navigateContestant = navigateContestant;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.selectContestantByIndex = selectContestantByIndex;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleLogout = handleLogout;<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// Expose Admin functions for attachment in renderAdminUI</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleAddContestant = handleAddContestant;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>window.handleAddJudge = handleAddJudge;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// --- START APP ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>initFirebase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
